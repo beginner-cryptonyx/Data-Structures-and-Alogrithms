@@ -44,11 +44,11 @@ class LinkedList:
                 target_pointer = -1
                 while current_pointer != -1:
                     if element >= self.array[current_pointer]:
-                        self.array[self.free_node_index] = element
-                        self.pointers[self.free_node_index] = self.pointers[
-                            current_pointer
-                        ]
                         target_pointer = current_pointer
+                    self.array[self.free_node_index] = element
+                    self.pointers[self.free_node_index] = self.pointers[
+                        current_pointer
+                    ]
                     current_pointer = self.pointers[current_pointer]
                 self.pointers[target_pointer] = self.free_node_index
             self.length += 1
@@ -72,7 +72,7 @@ class LinkedList:
                     self.pointers[prev_node_index] = self.pointers[target_node_index]
                     self.pointers[target_node_index] = None
                     self.array[target_node_index] = None
-
+                self.length -= 1
             except ValueError as e:
                 print(f"Element {element} was not found in the list: {e}")
 
@@ -95,9 +95,9 @@ if __name__ == "__main__":
                         quit/exit: exit the program"""
                     )
                 case "insert":
-                    linked_list.insert(command.split()[1])
+                    linked_list.insert(int(command.split()[1]))
                 case "delete":
-                    linked_list.delete(command.split()[1])
+                    linked_list.delete(int(command.split()[1]))
                 case "traverse":
                     linked_list.traverse()
                 case "quit":
