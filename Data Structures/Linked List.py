@@ -1,4 +1,4 @@
-class LinkedList:
+class LinkedList:u
     def __init__(self, maximum_length) -> None:
         self.maximum = maximum_length
         self.length = 0
